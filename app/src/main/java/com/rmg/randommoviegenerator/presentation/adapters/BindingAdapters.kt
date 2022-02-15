@@ -1,4 +1,4 @@
-package com.rmg.randommoviegenerator.adapters
+package com.rmg.randommoviegenerator.presentation.adapters
 
 import android.net.Uri
 import android.view.View

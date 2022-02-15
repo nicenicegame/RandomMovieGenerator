@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.rmg.randommoviegenerator.adapters.FavouriteMovieAdapter
+import com.rmg.randommoviegenerator.presentation.adapters.FavouriteMovieAdapter
 import com.rmg.randommoviegenerator.databinding.FragmentFavouriteBinding
 import com.rmg.randommoviegenerator.presentation.viewmodels.FavouriteViewModel
 import dagger.hilt.android.AndroidEntryPoint

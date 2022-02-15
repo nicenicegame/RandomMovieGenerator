@@ -1,4 +1,4 @@
-package com.rmg.randommoviegenerator.adapters
+package com.rmg.randommoviegenerator.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View

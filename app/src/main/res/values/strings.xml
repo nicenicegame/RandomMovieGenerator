@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RandomMovieGenerator</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="generate">Generate</string>
+    <string name="generate_movie_poster">Generate Movie Poster</string>
+    <string name="favourite">Favourite</string>
+    <string name="genre_label">Genre</string>
+    <string name="add_to_favourite">Add this movie to favourite action</string>
+    <string name="favourite_search_movie">Search</string>
+    <string name="movie_detail_backdrop">Movie Detail Backdrop</string>
+    <string name="choose_the_movie_genre_and_click_generate">Choose the movie genre and click generate.</string>
+</resources>

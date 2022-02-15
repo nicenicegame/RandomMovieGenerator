@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.rmg.randommoviegenerator.presentation.viewmodels.GeneratorViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:menu="@menu/menu_generator_fragment"
+                app:title="Movie Generator" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="48dp"
+                app:isGone="@{viewModel.genres.size() == 0}">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:isGone="@{viewModel.genres.size() != 0}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:hint="@string/genre_label"
+                    app:layout_constraintEnd_toStartOf="@+id/btnGenerateMovie"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/acGenres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        tools:ignore="LabelFor" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <FrameLayout
+                    android:id="@+id/flMovieFrame"
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:isGone="@{!viewModel.isGenerating}" />
+
+                    <ImageView
+                        android:id="@+id/ivMoviePoster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/generate_movie_poster"
+                        app:imageSize="@{300}"
+                        app:imageUrl="@{viewModel.generatedMovie.posterPath}"
+                        app:isGone="@{viewModel.isGenerating}" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_the_movie_genre_and_click_generate"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    app:isGone="@{viewModel.generatedMovie != null || viewModel.isGenerating}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                    tools:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvMovieTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{viewModel.generatedMovie.title}"
+                    android:textAlignment="center"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintTop_toBottomOf="@+id/flMovieFrame"
+                    tools:text="Generated Movie Name" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{viewModel.generatedMovie.overview}"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMovieTitle"
+                    tools:text="Generate Movie Overview" />
+
+                <Button
+                    android:id="@+id/btnGenerateMovie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:onClick="@{() -> viewModel.generateMovie()}"
+                    android:text="@string/generate"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textInputLayout"
+                    app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favAddToFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/add_to_favourite"
+            android:onClick="@{() -> viewModel.onAddMovieToFavourite()}"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:src="@drawable/ic_favorite"
+            android:visibility="invisible"
+            app:isFabGone="@{viewModel.isFavourite || viewModel.generatedMovie == null}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

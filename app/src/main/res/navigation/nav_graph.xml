@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/generatorFragment">
+
+    <fragment
+        android:id="@+id/generatorFragment"
+        android:name="com.rmg.randommoviegenerator.presentation.ui.GeneratorFragment"
+        android:label="GeneratorFragment"
+        tools:layout="@layout/fragment_generator">
+        <action
+            android:id="@+id/action_generatorFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.rmg.randommoviegenerator.presentation.ui.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+        <action
+            android:id="@+id/action_movieDetailFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.rmg.randommoviegenerator.presentation.ui.FavouriteFragment"
+        android:label="FavouriteFragment"
+        tools:layout="@layout/fragment_favourite">
+        <action
+            android:id="@+id/action_favouriteFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+</navigation>

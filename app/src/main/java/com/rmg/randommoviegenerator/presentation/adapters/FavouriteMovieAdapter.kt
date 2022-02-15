@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.rmg.randommoviegenerator.data.models.DatabaseMovie
+import com.rmg.randommoviegenerator.data.local.DatabaseMovie
 import com.rmg.randommoviegenerator.databinding.ListItemMovieBinding
 import com.rmg.randommoviegenerator.presentation.ui.FavouriteFragmentDirections
 

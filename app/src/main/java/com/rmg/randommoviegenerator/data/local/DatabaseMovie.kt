@@ -1,4 +1,4 @@
-package com.rmg.randommoviegenerator.data.models
+package com.rmg.randommoviegenerator.data.local
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

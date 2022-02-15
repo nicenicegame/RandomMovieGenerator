@@ -1,7 +1,6 @@
 package com.rmg.randommoviegenerator.data.local
 
 import androidx.room.*
-import com.rmg.randommoviegenerator.data.models.DatabaseMovie
 import kotlinx.coroutines.flow.Flow
 
 @Dao

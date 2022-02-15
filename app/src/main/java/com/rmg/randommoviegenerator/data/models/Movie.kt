@@ -1,6 +1,7 @@
 package com.rmg.randommoviegenerator.data.models
 
 import com.google.gson.annotations.SerializedName
+import com.rmg.randommoviegenerator.data.local.DatabaseMovie
 
 data class Movie(
     val id: Int,

@@ -1,6 +1,6 @@
 package com.rmg.randommoviegenerator.domain.repository
 
-import com.rmg.randommoviegenerator.data.models.DatabaseMovie
+import com.rmg.randommoviegenerator.data.local.DatabaseMovie
 import com.rmg.randommoviegenerator.data.models.Genre
 import com.rmg.randommoviegenerator.data.models.Movie
 import com.rmg.randommoviegenerator.data.models.MovieDetail
